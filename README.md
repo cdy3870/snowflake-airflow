@@ -1,4 +1,4 @@
-# Research Conference Recommender
+# Surf Data Pipeline
 
 This repo contains the code for a data pipeline on surfing data. The purpose is to have a model that is updated daily with new surf weather information to determine if conditions are ideal. The predictive model is simple regressor at this point that predicts the height of tides at any given hour given forecast information. 
 

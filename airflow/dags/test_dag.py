@@ -8,8 +8,7 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.contrib.hooks.snowflake_hook import SnowflakeHook
 from airflow.contrib.operators.snowflake_operator import SnowflakeOperator
-# from create_csvs import test_func
-# import create_csvs
+
 import get_surf_data
 import snowflake_ingest
 import execute_experiments

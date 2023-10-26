@@ -24,7 +24,7 @@ The following steps are automated via Airflow and set up to run daily except ste
 2. Create main tables for full forecast, tide, etc. info and temp tables to store current day data
    
 ### Step 2: Save current surfline data as csvs via pysurfline API
-1. Pull the current day data from the API for a particular anchor point, which includes forecast, tide, and sunrise/sunset information
+1. Pull the current day data from the API for a particular anchor point, which includes forecast, tide, and sunrise/sunset information (currently pulling from three locations in New York, California, and Hawaii)
 2. Store as three separate csvs with an additional id column
    
 ### Step 3: Update database and preprocess

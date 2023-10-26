@@ -1,0 +1,12 @@
+airflow/dags/*.csv
+airflow/dags/mlflow_dag.py
+airflow/dags/create_csvs.py
+airflow/dags/__pycache__/
+airflow/dags/mlruns/
+airflow/logs/
+.ipynb_checkpoints/
+.DS_Store
+.streamlit/
+airflow/.env
+airflow/dags/csvs/
+mlruns/

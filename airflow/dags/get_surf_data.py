@@ -1,5 +1,6 @@
 import pysurfline
-
+import os
+import shutil
 
 spot_id = "5842041f4e65fad6a7708852" # anchor point
 
@@ -33,15 +34,29 @@ class Forecast():
 		return self.df_mapping
 
 def save_csvs(**kwargs):
-	forecast = Forecast(kwargs["spot_id"])
+	dir = 'csvs'
+	shutil.rmtree(dir, ignore_errors=True)
+	os.makedirs(dir)
 
-	df_mapping = forecast.get_dfs()
+	for location, spot_id in kwargs["ids"].items():
 
-	for key, df in df_mapping.items():
-		df.to_csv(f"{key}_data.csv", encoding='utf-8', index=False)
+		forecast = Forecast(spot_id)
+
+		df_mapping = forecast.get_dfs()
+
+		for key, df in df_mapping.items():
+			df.to_csv(f"csvs/{key}_data_{location}.csv", encoding='utf-8', index=False)
+
+# def save_csvs(spot_id):
+# 	forecast = Forecast(spot_id)
+
+# 	df_mapping = forecast.get_dfs()
+
+# 	for key, df in df_mapping.items():
+# 		df.to_csv(f"{key}_data.csv", encoding='utf-8', index=False)
 
 if __name__ == "__main__":
 	# forecast = Forecast(spot_id)
 	# print(forecast.get_dfs())
 
-	save_csvs(spot_id)
+	save_csvs({'Rockaways': "5842041f4e65fad6a7708852", "Malibu": "584204214e65fad6a7709b9f"})

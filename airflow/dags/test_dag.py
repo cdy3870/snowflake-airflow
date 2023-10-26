@@ -26,8 +26,8 @@ dag = DAG(
 
 
 with dag:
-    
-    save_csvs = PythonOperator(task_id="save_csvs_task", python_callable=get_surf_data.save_csvs, op_kwargs={'spot_id': "5842041f4e65fad6a7708852"})
+    spot_ids = {"ids": {'Rockaways': "5842041f4e65fad6a7708852", "Malibu": "584204214e65fad6a7709b9f", "Hale'iwa": "5842041f4e65fad6a7708df5"}}
+    save_csvs = PythonOperator(task_id="save_csvs_task", python_callable=get_surf_data.save_csvs, op_kwargs=spot_ids)
     setup_snowflake = PythonOperator(task_id="setup_snowflake_task", python_callable=snowflake_ingest.set_up)
     update_data = PythonOperator(task_id="update_data_task", python_callable=snowflake_ingest.update_db)
     preprocess_data = PythonOperator(task_id="preprocess_data_task", python_callable=snowflake_ingest.preprocess_and_store)
@@ -37,4 +37,8 @@ with dag:
 
 save_csvs >> update_data >> preprocess_data >> execute_ex
 
+# preprocess_data >> execute_ex
+
 # execute_ex
+
+# save_csvs

@@ -80,6 +80,8 @@ x-airflow-common:
     &airflow-common-depends-on
     postgres:
       condition: service_healthy
+  env_file:
+    - .env
 
 services:
   postgres:

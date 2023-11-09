@@ -147,9 +147,9 @@ def update_db():
 	conn.close()
 
 def preprocess_and_store():
-	conn = snow.connect(user="cdy3870",
-	password="Spartan3870!",
-	account="qeiieel-be76343")
+	conn = snow.connect(user=os.environ['SNOWFLAKE_USER'],
+	password=os.environ['SNOWFLAKE_PASS'],
+	account=os.environ['SNOWFLAKE_ACC'])
 	cur = conn.cursor()
 
 	cur.execute("USE ROLE SYSADMIN")
